@@ -1,0 +1,10 @@
+
+
+resources:
+- eck
+- grafana
+- promethus
+configMapGenerator:
+# Add configMaps here
+secretGenerator:
+# Add secrets here

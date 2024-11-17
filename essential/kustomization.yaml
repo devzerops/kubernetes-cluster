@@ -1,0 +1,49 @@
+helmCharts:
+  - name: argocd
+    version: 7.7.3
+    releaseName: homelab-argocd
+    namespace: argocd
+    vaulesFile: ./argocd/values.yaml
+    includeCRDs: false
+
+  - name: cilium
+    version: 1.16.3
+    releaseName: cilium
+    namespace: kube-system
+    vaulesFile: ./cilium/values.yaml
+
+  - name: rook-ceph-operator
+    version: latest
+    releaseName: rook-ceph
+    namespace: rook-ceph
+
+  - name: rook-ceph-cluster
+    version: latest
+    releaseName: rook-ceph
+    namespace: rook-ceph
+
+
+resources:
+- argocd
+- cilium
+
+patches:
+- path: cilium/ip-pool.yaml
+  target:
+    kind: DaemonSet
+    name: cilium
+- path: cilium/advertise.yaml
+  target:
+    kind: DaemonSet
+    name: cilium
+
+- path: argocd/service-dashboard.yaml
+  target:
+    kind: DaemonSet
+    name: argocd
+
+
+configMapGenerator:
+# Add configMaps here
+secretGenerator:
+# Add secrets here

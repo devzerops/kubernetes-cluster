@@ -1,0 +1,10 @@
+resources:
+- essential
+- istio
+- monitoring
+- network
+- security
+configMapGenerator:
+# Add configMaps here
+secretGenerator:
+# Add secrets here

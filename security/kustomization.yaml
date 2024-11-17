@@ -1,0 +1,6 @@
+resources:
+# Add resources here
+configMapGenerator:
+# Add configMaps here
+secretGenerator:
+# Add secrets here
