@@ -1,0 +1,4 @@
+apiVersion: v2
+name: network
+description: network component for my-cluster
+version: 0.1.0

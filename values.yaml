@@ -1,0 +1,10 @@
+essential:
+  enabled: true
+monitoring:
+  enabled: false
+network:
+  enabled: false
+security:
+  enabled: false
+istio:
+  enabled: false

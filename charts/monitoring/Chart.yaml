@@ -1,0 +1,33 @@
+apiVersion: v1
+
+name: 
+
+icon: https://helm.elastic.co/icons/eck.png
+
+description: my Cluster default settings
+
+home: https://github.com/devzerops/kubernetes-cluster
+
+type: application
+
+version: #2.16.0-SNAPSHOT
+
+appVersion: #2.16.0-SNAPSHOT
+
+kubeVersion: #">=1.21.0-0"
+
+keywords:
+  - eck
+  - 
+
+maintainers:
+  - name: sunghwan
+    email: dbstjdghks25@gmail.com
+
+dependencies:
+  - name: grafana
+    version: 8.6.0
+    repository: https://grafana.github.io/helm-charts
+  - name: prometheus
+    version: 25.30.1
+    repository: https://prometheus-community.github.io/helm-charts
