@@ -15,17 +15,6 @@ global:
       - rook-ceph
       - vault
 
-serviceAccount:
-  create: true
-  automount: true
-  # 필요한 경우 다른 serviceAccount 관련 설정 추가
-
-service:
-  type: ClusterIP
-  port: 80
-  # 필요한 경우 다른 service 관련 설정 추가
-
-
 cert-manager:
   namespace: cert-manager
 
@@ -227,6 +216,7 @@ eck-stack:
 
 eck-operator:
   namespace: elastic-system
+  installCRDs: false
 
 argo-cd:
   namespace: argocd
@@ -260,17 +250,6 @@ prometheus:
   namespace: monitoring
   podSecurity:
   enforce: privileged
-
-rook-ceph:
-  namespace: rook-ceph
-  podSecurity:
-    enforce: privileged
-
-rook-ceph-cluster:
-  namespace: rook-ceph
-  podSecurity:
-    enforce: privileged
-  operatorNamespace: rook-ceph
 
   cephClusterSpec:
     mon:

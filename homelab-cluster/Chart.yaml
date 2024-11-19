@@ -12,14 +12,6 @@ dependencies:
     version: 1.16.3
     repository: https://helm.cilium.io
     weight: 0
-  - name: rook-ceph
-    version: v1.15.5
-    repository: https://charts.rook.io/release
-    weight: 1
-  - name: rook-ceph-cluster
-    version: v1.15.5
-    repository: https://charts.rook.io/release
-    weight: 2
   - name: eck-stack
     version: 0.13.0
     repository: https://helm.elastic.co
