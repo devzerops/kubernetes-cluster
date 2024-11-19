@@ -1,3 +1,23 @@
+global:
+  podSecurity:
+    enforce: baseline
+    audit: baseline
+    warn: baseline
+  podSecurityExemptions:
+    namespaces:
+      - kube-system
+      - cert-manager
+      - cilium
+      - elastic-stack
+      - elastic-system
+      - argocd
+      - monitoring
+      - rook-ceph
+      - vault
+
+
+
+
 cert-manager:
   namespace: cert-manager
 
@@ -68,6 +88,8 @@ cilium:
 
 eck-stack:
   namespace: elastic-stack
+  podSecurity:
+    enforce: privileged
   eck-elasticsearch:
     nodeSets:
     - name: default
@@ -200,9 +222,8 @@ eck-operator:
 
 argo-cd:
   namespace: argocd
-  global:
-    domain: argocd.elastichomelab.com
-
+  podSecurity:
+  enforce: privileged
   configs:
     params:
       server.insecure: true
@@ -224,15 +245,84 @@ argo-cd:
 
 grafana:
   namespace: monitoring
+  podSecurity:
+  enforce: privileged
 
 prometheus:
   namespace: monitoring
+  podSecurity:
+  enforce: privileged
 
 rook-ceph:
   namespace: rook-ceph
+  podSecurity:
+    enforce: privileged
 
 rook-ceph-cluster:
   namespace: rook-ceph
+  podSecurity:
+    enforce: privileged
+  operatorNamespace: rook-ceph
+
+  cephClusterSpec:
+    mon:
+      count: 3
+    mgr:
+      count: 1
+    dashboard:
+      enabled: true
+    storage:
+      useAllNodes: true
+      useAllDevices: true
+    
+  cephBlockPools:
+    - name: replicapool
+      spec:
+        failureDomain: host
+        replicated:
+          size: 3
+      storageClass:
+        enabled: true
+        name: rook-ceph-block
+        isDefault: true
+        reclaimPolicy: Delete
+        allowVolumeExpansion: true
+        
+  cephFileSystems:
+    - name: myfs
+      spec:
+        metadataPool:
+          replicated:
+            size: 3
+        dataPools:
+          - name: replicated
+            replicated:
+              size: 3
+        metadataServer:
+          activeCount: 1
+          activeStandby: true
+      storageClass:
+        enabled: true
+        name: rook-cephfs
+        
+  cephObjectStores:
+    - name: my-store
+      spec:
+        metadataPool:
+          failureDomain: host
+          replicated:
+            size: 3
+        dataPool:
+          failureDomain: host
+          erasureCoded:
+            dataChunks: 2
+            codingChunks: 1
+        gateway:
+          port: 80
+          instances: 1
+      storageClass:
+        enabled: true
+        name: rook-ceph-bucket
 
 vault:
   namespace: vault

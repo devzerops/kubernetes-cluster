@@ -2,6 +2,7 @@ apiVersion: v2
 name: homelab-cluster
 description: homelab-cluster
 version: 0.1.0
+icon: https://helm.elastic.co/icons/eck.png
 dependencies:
   - name: cert-manager
     version: v1.16.1
