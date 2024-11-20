@@ -1,7 +1,5 @@
-cert-manager:
-  enabled: true
-  crd:
-    enabled: true
+cert-manager: 
+  installCRDs: true
 
 vault:
   enabled: true
