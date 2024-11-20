@@ -1,0 +1,7 @@
+cert-manager:
+  enabled: true
+  crd:
+    enabled: true
+
+vault:
+  enabled: true
