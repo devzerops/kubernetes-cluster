@@ -8,8 +8,6 @@ global:
       - kube-system
       - cert-manager
       - cilium
-      - elastic-stack
-      - elastic-system
       - argocd
       - monitoring
       - rook-ceph
