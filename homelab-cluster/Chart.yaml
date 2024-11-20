@@ -1,35 +1,24 @@
 apiVersion: v2
 name: homelab-cluster
-description: homelab-cluster
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
 version: 0.1.0
-icon: https://helm.elastic.co/icons/eck.png
 
-annotations:
-  "helm.sh/hook": pre-install,pre-upgrade
-  "helm.sh/hook-weight": "-1"
-
-dependencies:
-  - name: cert-manager
-    version: v1.16.1
-    repository: https://charts.jetstack.io
-    weight: 3
-  - name: cilium
-    version: 1.16.3
-    repository: https://helm.cilium.io
-    weight: 0
-  - name: argo-cd
-    version: 7.7.3
-    repository: https://argoproj.github.io/argo-helm
-    weight: 4
-  - name: grafana
-    version: 8.6.0
-    repository: https://grafana.github.io/helm-charts
-    weight: 4
-  - name: prometheus
-    version: 25.30.0
-    repository: https://prometheus-community.github.io/helm-charts
-    weight: 4
-  - name: vault
-    version: 0.29.0
-    repository: https://helm.releases.hashicorp.com
-    weight: 4
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
