@@ -1,5 +1,15 @@
 cert-manager: 
   installCRDs: true
 
-vault:
+vault: []
+
+external-dns:
   enabled: true
+  provider: 
+    name: cloudflare
+  env:
+    - name: CF_API_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: cloudflare-api-key
+          key: apiKey

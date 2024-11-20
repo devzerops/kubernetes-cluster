@@ -9,10 +9,11 @@ dependencies:
     version: 1.16.1
     repository: https://charts.jetstack.io
     weight: 0
-    condition: cert-manager.enabled
   - name: vault
     version: 0.29.0
     repository: https://helm.releases.hashicorp.com
     weight: 1
-    condition: vault.enabled
-
+  - name: external-dns
+    version: 0.29.0
+    repository: https://kubernetes-sigs.github.io/external-dns/
+    weight: 1
