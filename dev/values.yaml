@@ -1,0 +1,30 @@
+gitlab:
+  global:
+    hosts:
+      domain: gitlab.elastichomelab.com
+      externalIP: 192.168.2.2
+    edition: ee
+    registry:
+      name: registry.elastichomelab.com
+      https: false
+    minio:
+      name: minio.elastichomelab.com
+      https: false
+    smartcard:
+      name: smartcard.elastichomelab.com
+    kas:
+      name: kas.elastichomelab.com
+    pages:
+      name: pages.elastichomelab.com
+      https: false
+    ssh: gitlab.elastichomelab.com
+  certmanager-issuser:
+    email: dbstjdghks25@gmail.com
+
+jenkins:
+  
+
+gocd:
+  server:
+    service:
+      type: LoadBalancer
