@@ -17,14 +17,6 @@ dependencies:
     version: 1.16.3
     repository: https://helm.cilium.io
     weight: 0
-  - name: eck-stack
-    version: 0.13.0
-    repository: https://helm.elastic.co
-    weight: 3
-  - name: eck-operator
-    version: 2.15.0
-    repository: https://helm.elastic.co
-    weight: 3
   - name: argo-cd
     version: 7.7.3
     repository: https://argoproj.github.io/argo-helm
