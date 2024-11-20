@@ -3,6 +3,11 @@ name: homelab-cluster
 description: homelab-cluster
 version: 0.1.0
 icon: https://helm.elastic.co/icons/eck.png
+
+annotations:
+  "helm.sh/hook": pre-install,pre-upgrade
+  "helm.sh/hook-weight": "-1"
+
 dependencies:
   - name: cert-manager
     version: v1.16.1
