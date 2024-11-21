@@ -5,11 +5,22 @@ vault: []
 
 external-dns:
   enabled: true
-  provider: 
+  policy: sync
+  provider:
     name: cloudflare
+  sources:
+    #  - ingress
+    #  - service
+    #  - istio-virtualservice
+    - istio-gateway
+    
   env:
     - name: CF_API_TOKEN
       valueFrom:
         secretKeyRef:
           name: cloudflare-api-key
           key: apiKey
+
+  extraArgs:
+    - --cloudflare-proxied
+    - --cloudflare-dns-records-per-page=5000
