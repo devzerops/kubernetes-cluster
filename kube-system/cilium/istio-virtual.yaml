@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hubble-peer
+  namespace: kube-system
+spec:
+  hosts:
+  - "hubble-peer.secret-domain.com"
+  gateways:
+  - istio-system/hubble-peer-gateway
+  http:
+  - route:
+    - destination:
+        host: hubble-ui.kube-system.svc.cluster.local
+        port:
+          number: 80

@@ -1,0 +1,25 @@
+sources:
+  - service
+  - ingress
+  - istio-gateway
+  - istio-virtualservice
+
+# Policy for DNS records
+policy: sync
+
+# Provider configuration for Cloudflare
+provider:
+  name: cloudflare
+
+cloudflare:
+  proxied: true
+
+# Environment variables for Cloudflare API token
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: apiKey
+
+logLevel: debug

@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vault-virtualservice
+  namespace: istio-system
+spec:
+  hosts:
+  - "vault.secret-domain.com"
+  gateways:
+  - vault-gateway
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - vault.secret-domain.com
+    route:
+    - destination:
+        host: vault-ui.svc.cluster.local
+        port:
+          number: 8200

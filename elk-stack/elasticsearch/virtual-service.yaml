@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: elasticsearch-http-virtualservice
+  namespace: istio-system
+spec:
+  hosts:
+  - "elasticsearch-http.secret-domain.com"
+  gateways:
+  - elasticsearch-http-gateway
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - elasticsearch-http.secret-domain.com
+    route:
+    - destination:
+        host: elasticsearch-es-http.elastic-stack.svc.cluster.local
+        port:
+          number: 5601
